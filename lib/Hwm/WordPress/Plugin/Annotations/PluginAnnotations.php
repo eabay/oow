@@ -19,3 +19,6 @@ final class Action extends Hook {}
 
 /** @Annotation */
 final class Filter extends Hook {}
+
+/** @Annotation */
+final class Settings extends Annotation {}
