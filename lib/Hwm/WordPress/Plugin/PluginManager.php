@@ -58,7 +58,6 @@ class PluginManager
                         add_filter($tag, $function_to_add, $priority, $accepted_args);
                     } elseif ($annot instanceof \Hwm\WordPress\Plugin\Annotations\Settings) {
                         $this->addPlugin($plugin->{$method->getName()}());
-                        //var_dump($method);
                     }
                 }
             }
