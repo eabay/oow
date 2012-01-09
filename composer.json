@@ -1,12 +1,12 @@
 {
-    "name": "hwm/wordpress",
-    "description": "Object-Oriented approach to WordPress",
-    "keywords": ["wordpress"],
-    "homepage": "HOMEPAGE",
+    "name": "eabay/oo-wordpress",
+    "description": "Object-Oriented approach to WordPress plugin development",
+    "keywords": ["wordpress", "plugin", "wordpress plugin development"],
+    "homepage": "https://github.com/eabay/oo-wordpress",
     "type": "library",
     "license": "MIT",
     "authors": [
-        {"name": "Erhan Abay", "email": "erhan.abay@hwmnetwork.com"}
+        {"name": "Erhan Abay", "email": "erhanabay@gmail.com"}
     ],
     "require": {
         "php": ">=5.3.0",
