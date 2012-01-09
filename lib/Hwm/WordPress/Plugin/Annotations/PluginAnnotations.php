@@ -22,3 +22,9 @@ final class Filter extends Hook {}
 
 /** @Annotation */
 final class Settings extends Annotation {}
+
+/** @Annotation */
+final class Shortcode extends Annotation
+{
+    public $tag;
+}

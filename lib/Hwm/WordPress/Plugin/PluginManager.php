@@ -58,6 +58,11 @@ class PluginManager
                         add_filter($tag, $function_to_add, $priority, $accepted_args);
                     } elseif ($annot instanceof \Hwm\WordPress\Plugin\Annotations\Settings) {
                         $this->addPlugin($plugin->{$method->getName()}());
+                    } elseif ($annot instanceof \Hwm\WordPress\Plugin\Annotations\Shortcode) {
+                        $tag  = $annot->tag;
+                        $func = array($plugin, $method->getName());
+                        
+                        add_shortcode($tag, $func);
                     }
                 }
             }
