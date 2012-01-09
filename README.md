@@ -53,7 +53,6 @@ First create a plugin class:
 
 ``` php
 <?php
-
 namespace Plugins;
 
 /** @Plugin */
@@ -74,6 +73,7 @@ Go to your plugin file and register your plugin with `PluginManager`;
 /*
 Plugin Name: Hello World
 */
+
 use Hwm\WordPress\Plugin\PluginManager;
 use Plugins\HelloWorld;
 
@@ -82,7 +82,7 @@ $manager = new PluginManager;
 $manager->addPlugin(new HelloWorld);
 ```
 
-This will print *Hello World* in the page footer.
+This will print *Hello World* in the page footer. Check https://github.com/eabay/oo-wordpress-sample-plugin for sample plugin.
 
 You are free to create your classes as you want. `@Plugin` class annotation makes your class a plugin and `@Hook` method annotation hooks your its methods to actions and filters. If you semantically distinguish you action and filter hooks you can use `@Action` and `@Filter` annotations in method docblocks. Those are just synonyms and do exactly the same.
 
@@ -94,7 +94,6 @@ Please check [Doctrine Annotations] documentation to learn more about annotation
 ## Contributing
 
 Fork the project, create a feature branch, and send me a pull request.
-
 
 
 [WordPress]: http://wordpress.org/
