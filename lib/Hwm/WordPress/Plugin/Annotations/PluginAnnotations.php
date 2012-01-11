@@ -28,3 +28,6 @@ final class Shortcode extends Annotation
 {
     public $tag;
 }
+
+/** @Annotation */
+final class Widget extends Annotation {}

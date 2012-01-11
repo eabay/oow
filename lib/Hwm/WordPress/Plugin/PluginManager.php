@@ -77,4 +77,28 @@ class PluginManager
             $this->addPlugin($plugin);
         }
     }
+    
+    public function addWidget($widget)
+    {
+        $reflClass = new \ReflectionClass($widget);
+        
+        if (!$this->getAnnotationReader()->getClassAnnotation($reflClass, 'Hwm\WordPress\Plugin\Annotations\Widget')) {
+            throw new \InvalidArgumentException("{$reflClass->getName()} does not have any Hwm\WordPress\Plugin\Annotations\Widget annotation instance");
+        }
+        
+        add_action('widgets_init', function () use ($widget) {
+            global $wp_widget_factory;
+            
+            $wp_widget_factory->widgets[get_class($widget)] = $widget;
+        });
+        
+        return $this;
+    }
+    
+    public function addWidgets(array $widgets)
+    {
+        foreach ($widgets as $widget) {
+            $this->addWidget($widget);
+        }
+    }
 }
