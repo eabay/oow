@@ -5,7 +5,10 @@ namespace Hwm\WordPress\Plugin\Annotations;
 use Doctrine\Common\Annotations\Annotation;
 
 /** @Annotation */
-final class Plugin extends Annotation {}
+class Plugin extends Annotation {}
+
+/** @Annotation */
+final class Widget extends Plugin {}
 
 /** @Annotation */
 class Hook extends Annotation
@@ -28,6 +31,3 @@ final class Shortcode extends Annotation
 {
     public $tag;
 }
-
-/** @Annotation */
-final class Widget extends Annotation {}

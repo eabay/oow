@@ -92,6 +92,8 @@ class PluginManager
             $wp_widget_factory->widgets[get_class($widget)] = $widget;
         });
         
+        $this->addPlugin($widget);
+        
         return $this;
     }
     
