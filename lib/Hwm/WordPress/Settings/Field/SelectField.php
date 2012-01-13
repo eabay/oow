@@ -18,14 +18,17 @@ class SelectField extends AbstractField
     
     public function render()
     {
-        $html = sprintf('<select id="%1$s_%2$s" name="%1$s[%2$s]" %3$s>',
+        $isMultiple = array_key_exists('multiple', $this->attr);
+        
+        $html = sprintf('<select id="%1$s_%2$s" name="%1$s[%2$s]%4$s" %3$s>',
             $this->optionName,
             $this->id,
-            $this->getAttribs()
+            $this->getAttribs(),
+            $isMultiple ? '[]' : ''
         );
         
         foreach($this->options as $value => $label) {
-            $selected = $this->value === $value ? 'selected' : '';
+            $selected = ($this->value === $value) || (in_array($value, $this->value)) ? 'selected' : '';
             
             $html .= sprintf('<option value="%s" %s>%s</option>', $value, $selected, $label);
         }
