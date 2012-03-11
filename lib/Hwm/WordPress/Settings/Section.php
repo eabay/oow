@@ -30,11 +30,11 @@ class Section
         $this->title = $title;
         
         if (!is_callable($callback)) {
-			$callback = function () use ($callback) {
-			    echo $callback;
-			};
-		}
-		
+            $callback = function () use ($callback) {
+                echo $callback;
+            };
+        }
+
         $this->callback = $callback;
     }
     
