@@ -1,6 +1,2 @@
-
-/composer.lock
+/.idea
 /vendor
-/.buildpath
-/.project
-/.settings/org.eclipse.php.core.prefs
