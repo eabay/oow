@@ -1,6 +1,6 @@
-# What is OO-WordPress?
+# What is Oow?
 
-OO-WordPress is a library that contains components to ease [WordPress] plugin development. "OO" in the name stands for object-oriented.
+Oow is a library that contains components to ease [WordPress] plugin development.
 
 
 ## Design
@@ -28,14 +28,14 @@ Plugins are just standalone PHP classes. They don't have to extend any base clas
 
 ### with [Composer]
 
-Add `eabay/oo-wordpress` as a dependency in your `composer.json` file.
+Add `eabay/oow` as a dependency in your `composer.json` file.
 
 ### from Source
 
 Clone repository and its dependencies;
 
     git clone git@github.com:doctrine/common.git
-    git clone git@github.com:eabay/oo-wordpress.git
+    git clone git@github.com:eabay/oow.git
 
 Register autoloader;
 
@@ -43,7 +43,7 @@ Register autoloader;
 <?php
 require_once 'common/lib/Doctrine/Common/ClassLoader.php';
 
-$loader = new Doctrine\Common\ClassLoader('Hwm\Wordpress', 'oo-wordpress/lib/');
+$loader = new Doctrine\Common\ClassLoader('Oow', 'oow/lib/');
 $loader->register();
 ```
 
@@ -74,7 +74,7 @@ Go to your plugin file and register your plugin with `PluginManager`;
 Plugin Name: Hello World
 */
 
-use Hwm\WordPress\Plugin\PluginManager;
+use Oow\Plugin\PluginManager;
 use Plugins\HelloWorld;
 
 $manager = new PluginManager;

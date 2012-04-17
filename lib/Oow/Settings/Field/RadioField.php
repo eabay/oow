@@ -1,6 +1,6 @@
 <?php
 
-namespace Hwm\WordPress\Settings\Field;
+namespace Oow\Settings\Field;
 
 class RadioField extends SelectField
 {

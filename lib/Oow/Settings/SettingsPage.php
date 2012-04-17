@@ -1,9 +1,9 @@
 <?php
 
-namespace Hwm\WordPress\Settings;
+namespace Oow\Settings;
 
-use Hwm\WordPress\Settings\Section;
-use Hwm\WordPress\Settings\Field\Field;
+use Oow\Settings\Section;
+use Oow\Settings\Field\Field;
 
 /** @Plugin */
 class SettingsPage
@@ -34,8 +34,8 @@ class SettingsPage
     /**
      * Adds a new section
      *
-     * @param Hwm\WordPress\Settings\Section $section
-     * @return Hwm\WordPress\Settings\SettingsPage
+     * @param Section $section
+     * @return SettingsPage
      */
     public function addSection(Section $section)
     {
@@ -49,8 +49,8 @@ class SettingsPage
     /**
      * Adds a field
      *
-     * @param Hwm\WordPress\Settings\Field\Field $field
-     * @return Hwm\WordPress\Settings\SettingsPage
+     * @param Field\Field $field
+     * @return SettingsPage
      */
     public function addField(Field $field)
     {

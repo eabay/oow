@@ -1,6 +1,6 @@
 <?php
 
-namespace Hwm\WordPress\Settings;
+namespace Oow\Settings;
 
 class Section
 {

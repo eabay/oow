@@ -1,14 +1,14 @@
 <?php
 
-namespace Hwm\WordPress\Settings\Field;
+namespace Oow\Settings\Field;
 
-use Hwm\WordPress\Settings;
-use Hwm\WordPress\Settings\Section;
+use Oow\Settings;
+use Oow\Settings\Section;
 
 interface Field
 {
     /**
-     * @param Hwm\WordPress\Settings\Section $section
+     * @param Oow\Settings\Section $section
      * 
      * @return Field
      */
@@ -41,7 +41,7 @@ interface Field
     
     /**
      * 
-     * @return Hwm\WordPress\Settings\Section
+     * @return Oow\Settings\Section
      */
     public function getSection();
     

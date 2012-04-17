@@ -1,9 +1,8 @@
 <?php
 
-namespace Hwm\WordPress\Settings\Field;
+namespace Oow\Settings\Field;
 
-use Hwm\WordPress\Settings;
-use Hwm\WordPress\Settings\Section;
+use Oow\Settings\Section;
 
 abstract class AbstractField implements Field
 {
@@ -11,24 +10,24 @@ abstract class AbstractField implements Field
      * @var string
      */
     protected $id;
-    
+
     /**
      * @var string
      */
     protected $title;
-    
+
     /**
      * @var mixed
      */
     protected $value;
-    
+
     /**
      * @var mixed
      */
     protected $optionName;
-    
+
     /**
-     * @var Hwm\WordPress\Settings\Section
+     * @var Oow\Settings\Section
      */
     protected $section;
     

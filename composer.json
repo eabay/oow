@@ -1,5 +1,5 @@
 {
-    "name": "eabay/oo-wordpress",
+    "name": "eabay/oow",
     "description": "Object-Oriented approach to WordPress plugin development",
     "keywords": ["wordpress", "plugin", "wordpress plugin development"],
     "homepage": "https://github.com/eabay/oo-wordpress",
@@ -13,6 +13,6 @@
         "doctrine/common" : "2.2.*"
     },
     "autoload": {
-        "psr-0": {"Hwm\\WordPress": "lib/"}
+        "psr-0": {"Oow": "lib/"}
     }
 }

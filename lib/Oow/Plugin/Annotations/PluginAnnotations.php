@@ -1,6 +1,6 @@
 <?php
 
-namespace Hwm\WordPress\Plugin\Annotations;
+namespace Oow\Plugin\Annotations;
 
 use Doctrine\Common\Annotations\Annotation;
 
