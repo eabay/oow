@@ -2,7 +2,7 @@
     "name": "eabay/oow",
     "description": "Object-Oriented approach to WordPress plugin development",
     "keywords": ["wordpress", "plugin", "wordpress plugin development"],
-    "homepage": "https://github.com/eabay/oo-wordpress",
+    "homepage": "https://github.com/eabay/oow",
     "type": "library",
     "license": "MIT",
     "authors": [
