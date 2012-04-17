@@ -25,7 +25,10 @@ class PluginManager
         
         return $this;
     }
-    
+
+    /**
+     * @return Reader
+     */
     public function getAnnotationReader()
     {
         if (!$this->annotationReader) {
@@ -43,7 +46,7 @@ class PluginManager
         $reflClass = new \ReflectionClass($plugin);
         
         if (!$this->getAnnotationReader()->getClassAnnotation($reflClass, 'Oow\Plugin\Annotations\Plugin')) {
-            throw new \InvalidArgumentException("{$reflClass->getName()} does not have any Oow\Plugin\Annotations\Plugin annotation instance");
+            throw new \InvalidArgumentException("{$reflClass->getName()} does not have any Oow\\Plugin\\Annotations\\Plugin annotation instance");
         }
         
         foreach ($reflClass->getMethods() as $method) {
@@ -83,7 +86,7 @@ class PluginManager
         $reflClass = new \ReflectionClass($widget);
         
         if (!$this->getAnnotationReader()->getClassAnnotation($reflClass, 'Oow\Plugin\Annotations\Widget')) {
-            throw new \InvalidArgumentException("{$reflClass->getName()} does not have any Oow\Plugin\Annotations\Widget annotation instance");
+            throw new \InvalidArgumentException("{$reflClass->getName()} does not have any Oow\\Plugin\\Annotations\\Widget annotation instance");
         }
         
         add_action('widgets_init', function () use ($widget) {
