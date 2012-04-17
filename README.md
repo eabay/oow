@@ -82,7 +82,7 @@ $manager = new PluginManager;
 $manager->addPlugin(new HelloWorld);
 ```
 
-This will print *Hello World* in the page footer. Check https://github.com/eabay/oo-wordpress-sample-plugin for sample plugin.
+This will print *Hello World* in the page footer. Check https://github.com/eabay/oow-sample-plugin for sample plugin.
 
 You are free to create your classes as you want. `@Plugin` class annotation makes your class a plugin and `@Hook` method annotation hooks your its methods to actions and filters. If you semantically distinguish you action and filter hooks you can use `@Action` and `@Filter` annotations in method docblocks. Those are just synonyms and do exactly the same.
 
@@ -98,6 +98,6 @@ Fork the project, create a feature branch, and send me a pull request.
 
 [WordPress]: http://wordpress.org/
 [Doctrine Common]: https://github.com/doctrine/common
-[composer]: https://github.com/composer/composer/
-[Doctrine Annotations]: http://www.doctrine-project.org/docs/common/2.2/en/reference/annotations.html
+[composer]: http://getcomposer.org/
+[Doctrine Annotations]: http://docs.doctrine-project.org/projects/doctrine-common/en/latest/reference/annotations.html
 [add_filter]: http://codex.wordpress.org/Function_Reference/add_filter
