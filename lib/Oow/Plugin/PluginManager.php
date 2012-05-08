@@ -57,7 +57,7 @@ class PluginManager
                         $function_to_add = array($plugin, $method->getName());
                         $priority        = $annot->priority;
                         $accepted_args   = $method->getNumberOfParameters();
-                        
+
                         add_filter($tag, $function_to_add, $priority, $accepted_args);
                     } elseif ($annot instanceof \Oow\Plugin\Annotations\Settings) {
                         $this->addPlugin($plugin->{$method->getName()}());
@@ -66,6 +66,18 @@ class PluginManager
                         $func = array($plugin, $method->getName());
                         
                         add_shortcode($tag, $func);
+                    } elseif ($annot instanceof \Oow\Plugin\Annotations\AjaxResponse) {
+                        $closure = function() use ($plugin, $method) {
+                            header('Content-Type: application/json');
+                            echo json_encode($plugin->{$method->getName()}());
+                            exit;
+                        };
+
+                        add_action('wp_ajax_'. $annot->action, $closure);
+
+                        if ($annot->nopriv) {
+                            add_action('wp_ajax_nopriv_'. $annot->action, $closure);
+                        }
                     }
                 }
             }

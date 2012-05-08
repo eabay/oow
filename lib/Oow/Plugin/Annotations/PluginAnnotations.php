@@ -31,3 +31,15 @@ final class Shortcode extends Annotation
 {
     public $tag;
 }
+
+/**
+ * @Annotation
+ * @Target("METHOD")
+ */
+final class AjaxResponse
+{
+    /** @var string */
+    public $action;
+    /** @var boolean */
+    public $nopriv = false;
+}
