@@ -67,9 +67,15 @@ class PluginManager
                         
                         add_shortcode($tag, $func);
                     } elseif ($annot instanceof \Oow\Plugin\Annotations\AjaxResponse) {
-                        $closure = function() use ($plugin, $method) {
+                        $closure = function() use ($plugin, $method, $annot) {
+                            if (isset($_REQUEST['_wpnonce']) && !wp_verify_nonce($_REQUEST['_wpnonce'], $annot->action)) {
+                                $response = false;
+                            } else {
+                                $response = $plugin->{$method->getName()}();
+                            }
+
                             header('Content-Type: application/json');
-                            echo json_encode($plugin->{$method->getName()}());
+                            echo json_encode($response);
                             exit;
                         };
 
