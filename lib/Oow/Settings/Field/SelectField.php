@@ -28,7 +28,7 @@ class SelectField extends AbstractField
         );
         
         foreach($this->options as $value => $label) {
-            $selected = ($this->value === $value) || (in_array($value, $this->value)) ? 'selected' : '';
+            $selected = ($this->value == $value) || (is_array($this->value) && in_array($value, $this->value)) ? 'selected' : '';
             
             $html .= sprintf('<option value="%s" %s>%s</option>', $value, $selected, $label);
         }
