@@ -74,7 +74,6 @@ class PluginManager
                                 $response = $plugin->{$method->getName()}();
                             }
 
-                            header('Content-Type: application/json');
                             echo json_encode($response);
                             exit;
                         };
