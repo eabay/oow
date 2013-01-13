@@ -15,13 +15,13 @@ If you are familiar with how Doctrine2 works, there is just a little to explain.
 
 ### Plugins
 
-Plugins are just standalone PHP classes. They don't have to extend any base class and don't have to follow any naming conventions. Annotations in docblocks are used to handle classes. 
+Plugins are just standalone PHP classes. They don't have to extend any base class and don't have to follow any naming conventions. Annotations in docblocks are used to handle classes.
 
 
 ## Requirements
 
 * PHP 5.3.2 and up
-* [Doctrine Common] library to process annotations
+* [Doctrine Annotations] library to process annotations
 
 
 ## Installation
@@ -30,22 +30,6 @@ Plugins are just standalone PHP classes. They don't have to extend any base clas
 
 Add `eabay/oow` as a dependency in your `composer.json` file.
 
-### from Source
-
-Clone repository and its dependencies;
-
-    git clone git@github.com:doctrine/common.git
-    git clone git@github.com:eabay/oow.git
-
-Register autoloader;
-
-``` php
-<?php
-require_once 'common/lib/Doctrine/Common/ClassLoader.php';
-
-$loader = new Doctrine\Common\ClassLoader('Oow', 'oow/lib/');
-$loader->register();
-```
 
 ## Usage
 
@@ -97,7 +81,6 @@ Fork the project, create a feature branch, and send me a pull request.
 
 
 [WordPress]: http://wordpress.org/
-[Doctrine Common]: https://github.com/doctrine/common
 [composer]: http://getcomposer.org/
 [Doctrine Annotations]: http://docs.doctrine-project.org/projects/doctrine-common/en/latest/reference/annotations.html
 [add_filter]: http://codex.wordpress.org/Function_Reference/add_filter
