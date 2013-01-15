@@ -18,13 +18,12 @@ class SelectField extends AbstractField
 
     public function render()
     {
-        $isMultiple = array_key_exists('multiple', $this->attr);
+        if (array_key_exists('multiple', $this->attr)) {
+            $this->attr['name'] .= '[]';
+        }
 
-        $html = sprintf('<select id="%1$s_%2$s" name="%1$s[%2$s]%4$s" %3$s>',
-            $this->optionName,
-            $this->id,
-            $this->getAttribs(),
-            $isMultiple ? '[]' : ''
+        $html = sprintf('<select %s>',
+            $this->getAttribs()
         );
 
         foreach($this->options as $value => $label) {

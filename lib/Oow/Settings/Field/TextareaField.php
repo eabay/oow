@@ -12,14 +12,11 @@ class TextareaField extends AbstractField
 
     public function render()
     {
-        $html = sprintf('<textarea id="%1$s_%2$s" name="%1$s[%2$s]" %3$s>%4$s</textarea>',
-            $this->optionName,
-            $this->id,
+        $html = sprintf('<textarea %s>%s</textarea> %s',
             $this->getAttribs(),
-            $this->value
+            $this->value,
+            $this->getDescriptionHtml()
         );
-
-        $html .= $this->getDescriptionHtml();
 
         return $html;
     }

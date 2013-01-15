@@ -16,13 +16,7 @@ class TextField extends AbstractField
     {
         $this->attr['value'] = $this->value;
 
-        $html = sprintf('<input id="%1$s_%2$s" name="%1$s[%2$s]" %3$s>',
-            $this->optionName,
-            $this->id,
-            $this->getAttribs()
-        );
-
-        $html .= $this->getDescriptionHtml();
+        $html = sprintf('<input %s> %s', $this->getAttribs(), $this->getDescriptionHtml());
 
         return $html;
     }

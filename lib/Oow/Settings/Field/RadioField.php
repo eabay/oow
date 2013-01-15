@@ -17,17 +17,22 @@ class RadioField extends SelectField
 
             $checked = $this->value === $value ? 'checked' : '';
 
-            $html .= sprintf('<label><input name="%1$s[%2$s]" %3$s %5$s>%4$s</label>',
-                $this->optionName,
-                $this->id,
+            $html .= sprintf('<label><input %s %s>%s</label>',
                 $this->getAttribs(),
-                $label,
-                $checked
+                $checked,
+                $label
             );
         }
 
         $html .= $this->getDescriptionHtml();
 
         return $html;
+    }
+
+    public function getAttribs()
+    {
+        unset($this->attr['id']);
+
+        return parent::getAttribs();
     }
 }

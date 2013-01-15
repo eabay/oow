@@ -87,6 +87,13 @@ abstract class AbstractField implements Field
         return $this;
     }
 
+    public function setId($value)
+    {
+        $this->id = $value;
+
+        return $this;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -118,6 +125,11 @@ abstract class AbstractField implements Field
 
     public function getAttribs()
     {
+        $this->attr = array_merge($this->attr, array(
+            'id'   => str_replace('.', '_', $this->id),
+            'name' => sprintf('%s[%s]', $this->optionName, str_replace('.', '][', $this->id))
+        ));
+
         $attribs = '';
 
         foreach ($this->attr as $name => $value) {
