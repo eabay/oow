@@ -22,6 +22,11 @@ interface Field
     /**
      * @return Field
      */
+    public function setId($value);
+
+    /**
+     * @return Field
+     */
     public function setOptionName($name);
 
     /**
