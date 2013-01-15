@@ -49,7 +49,7 @@ class SettingsPage
     /**
      * Adds a field
      *
-     * @param Field\Field $field
+     * @param Field $field
      * @return SettingsPage
      */
     public function addField(Field $field)
@@ -98,10 +98,12 @@ class SettingsPage
         register_setting($reg['option_group'], $reg['option_name'], $reg['sanitize_callback']);
 
         foreach ($reg['sections'] as $section) {
+            /* @var $section Section */
             add_settings_section($section->getId(), $section->getTitle(), $section->getCallback(), $reg['option_name']);
         }
 
         foreach ($reg['fields'] as $field) {
+            /* @var $field Field */
             add_settings_field($field->getId(), $field->getTitle(), $field->getCallback(), $reg['option_name'], $field->getSection()->getId());
         }
     }
