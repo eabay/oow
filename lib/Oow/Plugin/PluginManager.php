@@ -83,6 +83,12 @@ class PluginManager
                         if ($annot->nopriv) {
                             add_action('wp_ajax_nopriv_'. $annot->action, $closure);
                         }
+                    } elseif ($annot instanceof \Oow\Plugin\Annotations\Embed) {                        $id     = $annot->id;
+                        $regex  = $annot->regex;
+                        $func   = array($plugin, $method->getName());
+                        $priority        = $annot->priority;
+
+                        wp_embed_register_handler($id, $regex, $func, $priority);
                     }
                 }
             }
