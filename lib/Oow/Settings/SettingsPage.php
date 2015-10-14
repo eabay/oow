@@ -81,10 +81,7 @@ class SettingsPage
             <form action="options.php" method="post">
             <?php settings_fields($reg['option_name']); ?>
             <?php do_settings_sections($reg['option_name']); ?>
-            <p class="submit">
-                <input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" />
-                <input name="Reset" type="reset" class="button" value="<?php esc_attr_e('Reset'); ?>" />
-            </p>
+            <?php submit_button(); ?>
             </form>
         </div>
     <?php
