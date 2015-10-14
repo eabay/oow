@@ -42,6 +42,8 @@ final class AjaxResponse
     public $action;
     /** @var boolean */
     public $nopriv = false;
+    /** @var boolean */
+    public $json = true;
 }
 
 /** @Annotation */

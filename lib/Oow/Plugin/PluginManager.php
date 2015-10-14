@@ -52,21 +52,21 @@ class PluginManager
         foreach ($reflClass->getMethods() as $method) {
             if ($method->isPublic()) {
                 foreach ($this->getAnnotationReader()->getMethodAnnotations($method) as $annot) {
-                    if ($annot instanceof \Oow\Plugin\Annotations\Hook) {
+                    if ($annot instanceof Annotations\Hook) {
                         $tag             = $annot->tag;
                         $function_to_add = array($plugin, $method->getName());
                         $priority        = $annot->priority;
                         $accepted_args   = $method->getNumberOfParameters();
 
                         add_filter($tag, $function_to_add, $priority, $accepted_args);
-                    } elseif ($annot instanceof \Oow\Plugin\Annotations\Settings) {
+                    } elseif ($annot instanceof Annotations\Settings) {
                         $this->addPlugin($plugin->{$method->getName()}());
-                    } elseif ($annot instanceof \Oow\Plugin\Annotations\Shortcode) {
+                    } elseif ($annot instanceof Annotations\Shortcode) {
                         $tag  = $annot->tag;
                         $func = array($plugin, $method->getName());
                         
                         add_shortcode($tag, $func);
-                    } elseif ($annot instanceof \Oow\Plugin\Annotations\AjaxResponse) {
+                    } elseif ($annot instanceof Annotations\AjaxResponse) {
                         $closure = function() use ($plugin, $method, $annot) {
                             if (isset($_REQUEST['_wpnonce']) && !wp_verify_nonce($_REQUEST['_wpnonce'], $annot->action)) {
                                 $response = false;
@@ -74,7 +74,13 @@ class PluginManager
                                 $response = $plugin->{$method->getName()}();
                             }
 
-                            echo json_encode($response);
+                            if ($annot->json) {
+                                header('Content-Type: application/json');
+                                echo json_encode($response);
+                            } else {
+                                echo $response;
+                            }
+
                             exit;
                         };
 
@@ -83,10 +89,11 @@ class PluginManager
                         if ($annot->nopriv) {
                             add_action('wp_ajax_nopriv_'. $annot->action, $closure);
                         }
-                    } elseif ($annot instanceof \Oow\Plugin\Annotations\Embed) {                        $id     = $annot->id;
-                        $regex  = $annot->regex;
-                        $func   = array($plugin, $method->getName());
-                        $priority        = $annot->priority;
+                    } elseif ($annot instanceof Annotations\Embed) {
+                        $id       = $annot->id;
+                        $regex    = $annot->regex;
+                        $func     = array($plugin, $method->getName());
+                        $priority = $annot->priority;
 
                         wp_embed_register_handler($id, $regex, $func, $priority);
                     }
