@@ -25,7 +25,10 @@ class SettingsPage
         $options = array_merge(array(
             'sanitize_callback' => '',
             'sections'          => array(),
-            'fields'            => array()
+            'fields'            => array(),
+            'parent_slug'       => 'options-general.php',
+            'icon_url'          => '',
+            'position'          => null,
         ), $options);
 
         $this->registry = $options;
@@ -74,17 +77,16 @@ class SettingsPage
     public function render()
     {
         $reg = $this->registry;
-    ?>
+        ?>
         <div class="wrap">
-            <div class="icon32" id="icon-options-general"><br></div>
-            <h2><?php echo $reg['page_title']; ?></h2>
+            <h1><?php echo $reg['page_title']; ?></h1>
             <form action="options.php" method="post">
-            <?php settings_fields($reg['option_name']); ?>
-            <?php do_settings_sections($reg['option_name']); ?>
-            <?php submit_button(); ?>
+                <?php settings_fields($reg['option_name']); ?>
+                <?php do_settings_sections($reg['option_name']); ?>
+                <?php submit_button(); ?>
             </form>
         </div>
-    <?php
+        <?php
     }
 
     /** @Hook(tag="admin_init") */
@@ -110,12 +112,26 @@ class SettingsPage
     {
         $reg = $this->registry;
 
-        add_options_page(
-            $reg['page_title'],
-            $reg['menu_title'],
-            $reg['capability'],
-            $reg['option_name'],
-            array($this, 'render')
-        );
+        if ($reg['parent_slug'] == 'own') {
+
+            add_menu_page(
+                $reg['page_title'],
+                $reg['menu_title'],
+                $reg['capability'],
+                $reg['option_name'],
+                array($this, 'render'),
+                $reg['icon_url'],
+                $reg['position']
+            );
+        } else {
+            add_submenu_page(
+                $reg['parent_slug'],
+                $reg['page_title'],
+                $reg['menu_title'],
+                $reg['capability'],
+                $reg['option_name'],
+                array($this, 'render')
+            );
+        }
     }
 }
