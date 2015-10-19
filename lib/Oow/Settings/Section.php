@@ -24,7 +24,7 @@ class Section
      * @param string $title
      * @param string|\Closure $callback
      */
-    public function __construct($id, $title, $callback = '')
+    public function __construct($id, $title = '', $callback = '')
     {
         $this->id = $id;
         $this->title = $title;
