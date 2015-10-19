@@ -2,7 +2,6 @@
 
 namespace Oow\Settings;
 
-use Oow\Settings\Section;
 use Oow\Settings\Field\Field;
 
 /** @Plugin */
