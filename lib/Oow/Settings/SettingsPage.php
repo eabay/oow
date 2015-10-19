@@ -23,7 +23,7 @@ class SettingsPage
         $options['field_values'] = get_option($options['option_name']);
 
         $options = array_merge(array(
-            'sanitize_callback' => '',
+            'sanitize_callback' => [$this, 'sanitize'],
             'sections'          => array(),
             'fields'            => array(),
             'parent_slug'       => 'options-general.php',
@@ -81,6 +81,18 @@ class SettingsPage
     public function addError($code, $message, $type = 'error')
     {
         add_settings_error($this->registry['option_name'], $code, $message, $type);
+    }
+
+    /**
+     * Method for sanitize_callback option.
+     * Override to add your own sanitization/validation logic.
+     *
+     * @param $input
+     * @return mixed
+     */
+    public function sanitize($input)
+    {
+        return $input;
     }
 
     /**
