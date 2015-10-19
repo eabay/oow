@@ -72,6 +72,18 @@ class SettingsPage
     }
 
     /**
+     * Shortcut method to add form error/update notices via add_settings_error()
+     *
+     * @param $code
+     * @param $message
+     * @param string $type
+     */
+    public function addError($code, $message, $type = 'error')
+    {
+        add_settings_error($this->registry['option_name'], $code, $message, $type);
+    }
+
+    /**
      * Renders settings page
      */
     public function render()
@@ -81,6 +93,7 @@ class SettingsPage
         <div class="wrap">
             <h1><?php echo $reg['page_title']; ?></h1>
             <form action="options.php" method="post">
+                <?php settings_errors($reg['option_name']) ?>
                 <?php settings_fields($reg['option_name']); ?>
                 <?php do_settings_sections($reg['option_name']); ?>
                 <?php submit_button(); ?>
