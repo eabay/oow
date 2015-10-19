@@ -23,12 +23,13 @@ class SettingsPage
         $options['field_values'] = get_option($options['option_name']);
 
         $options = array_merge(array(
+            'capability'        => 'manage_options',
             'sanitize_callback' => [$this, 'sanitize'],
             'sections'          => array(),
             'fields'            => array(),
             'parent_slug'       => 'options-general.php',
             'icon_url'          => '',
-            'position'          => null,
+            'position'          => null
         ), $options);
 
         $this->registry = $options;
