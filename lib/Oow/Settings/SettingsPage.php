@@ -23,7 +23,7 @@ class SettingsPage
 
         $options = array_merge(array(
             'capability'        => 'manage_options',
-            'sanitize_callback' => [$this, 'sanitize'],
+            'sanitize_callback' => array($this, 'sanitize'),
             'sections'          => array(),
             'fields'            => array(),
             'parent_slug'       => 'options-general.php',
