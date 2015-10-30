@@ -2,6 +2,7 @@
 
 namespace Oow\Settings;
 
+use Dflydev\DotAccessData\Data;
 use Oow\Settings\Field\Field;
 
 /** @Plugin */
@@ -81,6 +82,19 @@ class SettingsPage
     public function addError($code, $message, $type = 'error')
     {
         add_settings_error($this->registry['option_name'], $code, $message, $type);
+    }
+
+    /**
+     * Returns the value of option
+     *
+     * @param string $name Name of option
+     * @param mixed $default Default value
+     * @return array|mixed|null Value of option
+     */
+    public function getOption($name, $default = null)
+    {
+        $data = new Data((array)get_option($this->registry['option_name']));
+        return $data->get($name, $default);
     }
 
     /**
