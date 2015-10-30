@@ -8,16 +8,31 @@ class CheckboxField extends AbstractField
         'type' => 'checkbox'
     );
 
+    protected $label;
+
+    public function __construct($key, $title, array $attr = array(), $label = null)
+    {
+        parent::__construct($key, $title, $attr);
+
+        $this->label = $label;
+    }
+
     public function render()
     {
         if ($this->value) {
             $this->attr['checked'] = 'checked';
         }
 
-        $html = sprintf('<label><input %1$s> <span class="description">%2$s</span></label>',
-            $this->getAttribs(),
-            $this->description
-        );
+        $html = "<label><input {$this->getAttribs()}>";
+
+        if ($this->label) {
+            $html .= $this->label;
+            $html .= '</label>';
+            $html .= "<p class=\"description\">{$this->description}</p>";
+        } else {
+            $html .= $this->description;
+            $html .= '</label>';
+        }
 
         return $html;
     }
