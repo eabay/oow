@@ -18,6 +18,11 @@ class SettingsPage
      */
     protected $currentSection;
 
+    /**
+     * @var array of WP_Screen::add_help_tab() arguments
+     */
+    protected $helpTabs = array();
+
     public function __construct(array $options = array())
     {
         $options['field_values'] = get_option($options['option_name']);
@@ -153,7 +158,7 @@ class SettingsPage
 
         if ($reg['parent_slug'] == 'own') {
 
-            add_menu_page(
+            $hookSuffix = add_menu_page(
                 $reg['page_title'],
                 $reg['menu_title'],
                 $reg['capability'],
@@ -163,7 +168,7 @@ class SettingsPage
                 $reg['position']
             );
         } else {
-            add_submenu_page(
+            $hookSuffix = add_submenu_page(
                 $reg['parent_slug'],
                 $reg['page_title'],
                 $reg['menu_title'],
@@ -172,5 +177,20 @@ class SettingsPage
                 array($this, 'render')
             );
         }
+
+        add_action('load-'.$hookSuffix, array($this, 'addHelpTabs'));
+    }
+
+    /**
+     * Add Help Tabs
+     *
+     * @uses WP_Screen::add_help_tab()
+     */
+    public function addHelpTabs()
+    {
+        foreach ($this->helpTabs as $tab) {
+            get_current_screen()->add_help_tab($tab);
+        }
+
     }
 }
